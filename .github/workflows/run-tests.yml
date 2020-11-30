@@ -1,0 +1,18 @@
+name: Test package
+
+on: [push, pull_request]
+
+jobs:
+    test_conduit_algorithms:
+      name: Build and test conduit-algorithms
+      runs-on: [ubuntu-latest]
+
+      steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-haskell@v1.1
+        with:
+          ghc-version: "8.8.4"
+          enable-stack: true
+          stack-setup-ghc: true
+      - name: test
+        run: stack test
